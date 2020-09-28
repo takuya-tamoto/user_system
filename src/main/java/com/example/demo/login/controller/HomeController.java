@@ -128,4 +128,11 @@ public class HomeController {
 		return new ResponseEntity<>(bytes, header, HttpStatus.OK);
 	}
 
+	//権限画面へ遷移
+	@GetMapping("/admin")
+	public String getAdmin(Model model) {
+		model.addAttribute("contents", "login/admin :: admin_contents");
+		return "login/homeLayout";
+	}
+
 }
