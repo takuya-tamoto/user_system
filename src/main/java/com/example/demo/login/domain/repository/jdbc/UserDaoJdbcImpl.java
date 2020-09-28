@@ -33,14 +33,15 @@ public class UserDaoJdbcImpl implements UserDao {
 	@Override
 	public int insertOne(User user) throws DataAccessException {
 		String password = passwordEncoder.encode(user.getPassword());
-		int rowNumber = jdbc.update("INSERT INTO m_user(user_id,"
+		String sql = "INSERT INTO m_user(user_id,"
 				+" password,"
 				+" user_name,"
 				+" birthday,"
 				+" age,"
 				+" marriage,"
 				+" role)"
-				+" VALUES(?,?,?,?,?,?,?)"
+				+" VALUES(?,?,?,?,?,?,?)";
+		int rowNumber = jdbc.update(sql
 				,user.getUserId()
 				,password
 				,user.getUserName()
