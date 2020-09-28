@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -57,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/css/**").permitAll() //cssへアクセス許可
 		.antMatchers("/login").permitAll() //ログインページは直リンクOK
 		.antMatchers("/signup").permitAll() //ユーザー登録画面は直リンクOK
-		//		.antMatchers("/rest/**").permitAll() //RESTは直リンクOK
+		.antMatchers("/rest/**").permitAll() //RESTは直リンクOK
 		.antMatchers("/admin").hasAuthority("ROLE_ADMIN") //アドミンユーザーに許可
 		.anyRequest().authenticated(); //それ以外は直リンク禁止
 
@@ -77,7 +78,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.logoutSuccessUrl("/loginn");
 
 		//csrf対策無効に設定
-//		http.csrf().disable();
+		http.csrf().disable();
+
+		//REST CSRF対策無効設定
+		RequestMatcher csrfMatcher = new RestMatcher("/rest/**");
+		http.csrf().requireCsrfProtectionMatcher(csrfMatcher);
+
 	}
 
 	@Override
