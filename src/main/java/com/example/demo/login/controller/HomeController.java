@@ -74,6 +74,7 @@ public class HomeController {
 		return "login/homeLayout";
 	}
 
+	//ユーザー更新処理
 	@PostMapping(value = "/userDetail", params = "update")
 	public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model) {
 		System.out.println("更新ボタン");
@@ -90,6 +91,19 @@ public class HomeController {
 			model.addAttribute("result", "更新成功");
 		} else {
 			model.addAttribute("result", "更新失敗");
+		}
+		return getUserList(model);
+	}
+
+	//ユーザー削除処理
+	@PostMapping(value = "/userDetail", params = "delete")
+	public String postUserDetailDelete(@ModelAttribute SignupForm form, Model model) {
+		System.out.println("削除ボタン実行");
+		boolean result = userService.deleteOne(form.getUserId());
+		if (result == true) {
+			model.addAttribute("result", "削除成功");
+		} else {
+			model.addAttribute("result", "削除失敗");
 		}
 		return getUserList(model);
 	}
