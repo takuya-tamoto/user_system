@@ -76,7 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.logoutUrl("/logout")
 		.logoutSuccessUrl("/loginn");
 
-		http.csrf().disable();
+		//csrf対策無効に設定
+//		http.csrf().disable();
 	}
 
 	@Override
