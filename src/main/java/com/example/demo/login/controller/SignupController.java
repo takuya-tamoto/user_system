@@ -60,4 +60,20 @@ public class SignupController {
 		}
 		return "redirect:/login";
 	}
+
+//	@ExceptionHandler(DataAccessException.class)
+//	public String daraAccessExceptionHandler(DataAccessException e, Model model) {
+//		model.addAttribute("error", "内部サーバーエラー（DB) : ExceptionHandler");
+//		model.addAttribute("message", "SignupControllerでDataAccessExceptionが発生しました");
+//		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+//		return "error";
+//	}
+//
+//	@ExceptionHandler(Exception.class)
+//	public String exceptionHandler(DataAccessException e, Model model) {
+//		model.addAttribute("error", "内部サーバーエラー : ExceptionHandler");
+//		model.addAttribute("message", "SignupControllerでExceptionが発生しました");
+//		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+//		return "error";
+//	}
 }
