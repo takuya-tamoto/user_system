@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.login.domain.model.User;
-import com.example.demo.login.domain.repository.mybatis.UserMapper;
+import com.example.demo.login.domain.repository.mybatis.UserMapper2;
 import com.example.demo.login.domain.service.RestService;
 
 @Transactional
@@ -15,7 +15,7 @@ import com.example.demo.login.domain.service.RestService;
 public class RestServiceMybatisImpl implements RestService {
 
 	@Autowired
-	UserMapper userMapper;
+	UserMapper2 userMapper;
 
 	@Override
 	public boolean insert(User user) {
