@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -80,9 +79,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//csrf対策無効に設定
 		http.csrf().disable();
 
-		//REST CSRF対策無効設定
-		RequestMatcher csrfMatcher = new RestMatcher("/rest/**");
-		http.csrf().requireCsrfProtectionMatcher(csrfMatcher);
+//		//REST CSRF対策無効設定
+//		RequestMatcher csrfMatcher = new RestMatcher("/rest/**");
+//		http.csrf().requireCsrfProtectionMatcher(csrfMatcher);
 
 	}
 
